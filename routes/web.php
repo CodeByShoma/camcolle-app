@@ -22,6 +22,9 @@ Route::get('/', function () {
 //一覧表示
 Route::get('/cars', [CarController::class, 'index'])->name('cars.index');
 
+//詳細
+Route::get('/cars/{id}', [CarController::class, 'show'])->name('cars.show');
+
 
 
 Route::get('/dashboard', function () {

@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('manufacturer')->nullable();
             $table->text('description')->nullable();
             $table->string('image_path')->nullable();
+            $table->integer('price')->nullable();
             $table->timestamps();
         });
     }

@@ -12,7 +12,7 @@ class CarController extends Controller
      */
     public function index()
     {
-        $cars = Car::select('name', 'image_path')->get();
+        $cars = Car::select('id','name', 'image_path')->get();
 
         return view('cars.index', compact('cars'));
     }
@@ -38,7 +38,10 @@ class CarController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //データを取得
+        $car = Car::findOrFail($id);
+
+        return view('cars.show', compact('car'));
     }
 
     /**

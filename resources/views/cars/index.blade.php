@@ -14,7 +14,7 @@
                             <div class="flex flex-wrap -m-4">
                                 @foreach ($cars as $car)
                                     <div class="lg:w-1/4 md:w-1/2 p-4 w-full">
-                                        <a class="block relative w-64 h-48 rounded overflow-hidden">
+                                        <a href="{{route('cars.show', $car->id)}}" class="block relative w-64 h-48 rounded overflow-hidden">
                                             <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="{{ $car->image_path ? asset('storage/'. $car->image_path) : asset('images/no_image.jpg')}}">
                                         </a>
                                         <div class="mt-4">
