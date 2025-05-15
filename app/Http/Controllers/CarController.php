@@ -22,7 +22,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -38,10 +38,16 @@ class CarController extends Controller
      */
     public function show(string $id)
     {
-        //データを取得
-        $car = Car::findOrFail($id);
+        // IDからキャンピングカーを取得し、同時にレビューも取得。さらにレビューを書いたユーザーも取得
+        $car = Car::with('reviews.user')->findOrFail($id);
 
-        return view('cars.show', compact('car'));
+        // 星の平均を計算（nullなら0）
+        $averageRating = $car->reviews->avg('rating') ?? 0;
+
+        //レビューの数カウント
+        $reviewCount = $car->reviews->count();
+
+        return view('cars.show', compact('car', 'averageRating', 'reviewCount'));
     }
 
     /**

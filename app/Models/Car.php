@@ -14,6 +14,13 @@ class Car extends Model
         'description',
         'image_path',
         'manufacturer',
-        'price', 
+        'price',
     ];
+
+    public function reviews(){
+        //一台の車は沢山のレビューを持っている
+        return $this->hasMany(Review::class);
+    }
+
+
 }
